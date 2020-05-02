@@ -3,6 +3,34 @@
   "containerDefinitions": [
    {
       "name": "client",
-      "image": "
+      "image": "aren1994/client",
+      "hostname": "client",
+      "essential": false
+   },
+   {
+      "name": "server",
+      "image": "aren1994/server",
+      "hostname": "api",
+      "essential": false
+   },
+   {
+      "name": "worker",
+      "image": "aren1994/worker",
+      "hostname": "worker",
+      "essential": false
+   },
+   {
+      "name": "nginx",
+      "image": "aren1994/nginx",
+      "hostname": "nginx",
+      "essential": true,
+      "portMappings": [
+        {
+         "hostPort": 80,
+         "containerPort": 80
+        }
+      ],
+      "links": ["client", "server"]
+    }
   ]
 }
